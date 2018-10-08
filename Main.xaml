@@ -135,14 +135,22 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="s:Exception">[SystemError]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="s:Exception">[exception]</InArgument>
-                    </Assign.Value>
-                  </Assign>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_13">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:Exception">[SystemError]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:Exception">[exception]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <If Condition="[Not File.Exists(&quot;Logs\logSystemExceptions.txt&quot;)]" DisplayName="If Log file doesn't exist" sap2010:WorkflowViewState.IdRef="If_5">
+                      <If.Then>
+                        <ui:CreateFile Name="{x:Null}" ContinueOnError="True" DisplayName="Create Log file" sap2010:WorkflowViewState.IdRef="CreateFile_1" Path="Logs\logSystemExceptions.txt" />
+                      </If.Then>
+                    </If>
+                    <ui:AppendLine DisplayName="Append line" FileName="Logs\logSystemExceptions.txt" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[&quot;Entró a System error en el estado inicial en la fecha: &quot; + Date.Now.ToString + &quot;/n&quot; + SystemError.ToString]" />
+                  </Sequence>
                 </ActivityAction>
               </Catch>
             </TryCatch.Catches>
@@ -233,7 +241,7 @@
       <Variable x:TypeArguments="ui:SelectorNotFoundException" Name="NotFoundError" />
       <Variable x:TypeArguments="x:Boolean" Name="ExistActiveSprint" />
     </StateMachine.Variables>
-    <sads:DebugSymbol.Symbol>d0FDOlxVc2Vyc1xkaWFuYS5jaXJvXERlc2t0b3BccHJveWVjdG8gU1dBTVxQcnVlYmEgQ2llcnJlXE1haW4ueGFtbFBAA+0BEgIBAecBM+cBNgIBekIH3AEPAgE4mgEP1gEXAgEhrAEX0AEfAgESuwEfzAEnAgECRAuVARYCAUCYAWyYAYYBAgE92QGLAdkBqAECATvaAY8B2gHYAQIBOpwBE6cBHgIBKaoBdqoBkgECASbTAY4B0wHKAQIBJdQBlwHUAbQBAgEjrgEbtQEzAgEXuAGZAbgB1QECARW5AX25AbQBAgEUvQEjygEuAgEERg+CARoCAUaKARORARwCAUGdARWdAb0BAgE2ngEVpgEtAgEqsQFisQFvAgEfsgF1sgGEAQIBHbMBcrMBegIBG7ABW7ABZAIBGa4BpAGuAbgBAgEYvgElvgHFAQIBEL8BJckBKgIBBUcRR60BAgF4SBFdFgIBa14RdxYCAVV4EYEBKQIBR48BQY8BTAIBRIwBQowBTwIBQp0BlQGdAboBAgE3ogFcogFpAgE0owFvowF+AgEypAFgpAFzAgEwoQFVoQFeAgEuoAFsoAF0AgEsngHBAZ4B4AECASu+AaUBvgHCAQIBEb8BM78BTQIBBsEBKccBQQIBCEeRAUeqAQIBeUgfSDwCAWxKFVsgAgFuXh9eNAIBVmAVdSACAVh/WH9lAgFTfVN9XAIBUX5rfnoCAU98aHxwAgFNelB6WgIBS3i9AXjXAQIBSntXe2ECAUjFAXDFAX0CAQ7EAYMBxAGSAQIBDMMBacMBcgIBCsEB1gHBAekBAgEJSxdSIAIBdFMXWiACAW9hF2cvAgFlaBdvLwIBW3AXdC8CAVlQRVBOAgF3TUZNUwIBdVhBWEwCAXJVQlVJAgFwZXBleAIBaWHDAWHZAQIBaGRcZHcCAWdjWGNoAgFmal5qawIBY2xfbGkCAWFrWGtiAgFfbW5tdgIBXWjDAWjYAQIBXHDEAXDbAQIBWg==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0FDOlxVc2Vyc1xkaWFuYS5jaXJvXERlc2t0b3BccHJveWVjdG8gU1dBTVxQcnVlYmEgQ2llcnJlXE1haW4ueGFtbFlAA/UBEgIBAe8BM+8BNgMBhAFCB+QBDwIBOKIBD94BFwIBIbQBF9gBHwIBEsMBH9QBJwIBAkQLnQEWAgFAoAFsoAGGAQIBPeEBiwHhAagBAgE74gGPAeIB2AECATqkAROvAR4CASmyAXayAZIBAgEm2wGOAdsBygECASXcAZcB3AG0AQIBI7YBG70BMwIBF8ABmQHAAdUBAgEVwQF9wQG0AQIBFMUBI9IBLgIBBEYPggEaAgFQigETmQEeAgFBpQEVpQG9AQIBNqYBFa4BLQIBKrkBYrkBbwIBH7oBdboBhAECAR27AXK7AXoCARu4AVu4AWQCARm2AaQBtgG4AQIBGMYBJcYBxQECARDHASXRASoCAQVHEUetAQMBggFIEV0WAgF1XhF3FgIBX3gRgQEpAgFRiwEVkgEeAgFLkwEVlwEaAgFGmAEVmAGgAgIBQqUBlQGlAboBAgE3qgFcqgFpAgE0qwFvqwF+AgEyrAFgrAFzAgEwqQFVqQFeAgEuqAFsqAF0AgEspgHBAaYB4AECASvGAaUBxgHCAQIBEccBM8cBTQIBBskBKc8BQQIBCEeRAUeqAQMBgwFIH0g8AgF2ShVbIAIBeF4fXjQCAWBgFXUgAgFif1h/ZQIBXX1TfVwCAVt+a356AgFZfGh8cAIBV3pQeloCAVV4vQF41wECAVR7V3thAgFSkAFDkAFOAgFOjQFEjQFRAgFMkwEjkwFgAgFHlQEZlQHCAQIBSJgBmgGYAZ0CAgFEmAFHmAFlAgFDzQFwzQF9AgEOzAGDAcwBkgECAQzLAWnLAXICAQrJAdYByQHpAQIBCUsXUiACAX5TF1ogAgF5YRdnLwIBb2gXby8CAWVwF3QvAgFjlQFIlQFOAgFKlQGhAZUBvwECAUlQRVBOAwGBAU1GTVMCAX9YQVhMAgF8VUJVSQIBemVwZXgCAXNhwwFh2QECAXJkXGR3AgFxY1hjaAIBcGpeamsCAW1sX2xpAgFra1hrYgIBaW1ubXYCAWdowwFo2AECAWZwxAFw2wECAWQ=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -281,8 +289,18 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="242,60.6666666666667" />
-      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="490,22.6666666666667">
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="464,60.6666666666667" />
+      <sap2010:ViewStateData Id="CreateFile_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_5" sap:VirtualizedContainerService.HintSize="464,212" />
+      <sap2010:ViewStateData Id="AppendLine_1" sap:VirtualizedContainerService.HintSize="464,86.6666666666667" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="486,559.333333333333">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="400,22.6666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -290,7 +308,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="200,52.6666666666667">
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="504,1716">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -338,7 +356,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_15" sap:VirtualizedContainerService.HintSize="430,546.666666666667">
+      <sap2010:ViewStateData Id="Transition_15" sap:VirtualizedContainerService.HintSize="430,517.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">233.333333333333,500.733333333333 81.6,500.733333333333 81.6,365</av:PointCollection>
@@ -446,7 +464,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="654,716" />
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="654,756" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

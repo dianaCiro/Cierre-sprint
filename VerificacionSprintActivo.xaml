@@ -84,23 +84,50 @@
                   <Sequence.Variables>
                     <Variable x:TypeArguments="ui:GenericValue" Name="aaname" />
                     <Variable x:TypeArguments="ui:GenericValue" Name="aastate" />
+                    <Variable x:TypeArguments="x:Boolean" Name="existSprintActive" />
                   </Sequence.Variables>
                   <ui:NavigateTo Browser="{x:Null}" DisplayName="Abrir proyecto" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_Config(&quot;urlProject&quot;).ToString]" />
-                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click  Sprint activos" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f2cad7bc60404ac4eb6b4df35078c3d0" Selector="&lt;webctrl aaname='Active sprints' isleaf='1' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
-                    </ui:Click.Target>
-                  </ui:Click>
+                  <ui:UiElementExists DisplayName="Element Exists opción Sprint Activo" Exists="[existSprintActive]" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;webctrl aaname='Active sprints' isleaf='1' tag='SPAN' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                    </ui:UiElementExists.Target>
+                  </ui:UiElementExists>
+                  <If Condition="[existSprintActive = true]" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click  Sprint activos" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f2cad7bc60404ac4eb6b4df35078c3d0" Selector="&lt;webctrl aaname='Active sprints' isleaf='1' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                        </ui:Click.Target>
+                      </ui:Click>
+                    </If.Then>
+                    <If.Else>
+                      <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click  Sprint activos" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f2cad7bc60404ac4eb6b4df35078c3d0" Selector="&lt;webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                        </ui:Click.Target>
+                      </ui:Click>
+                    </If.Else>
+                  </If>
                   <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aastate" DisplayName="Get attribute" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
                     <ui:GetAttribute.Result>
                       <OutArgument x:TypeArguments="ui:GenericValue">[aastate]</OutArgument>
@@ -153,7 +180,12 @@
                     <InArgument x:TypeArguments="s:Exception">[exception]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Entro system error verificación sprint activo &quot; + exception.ToString]" TopMost="True" />
+                <If Condition="[Not File.Exists(&quot;Logs\logSystemExceptions.txt&quot;)]" DisplayName="If Log file doesn't exist" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If.Then>
+                    <ui:CreateFile Name="{x:Null}" ContinueOnError="True" DisplayName="Create Log file" sap2010:WorkflowViewState.IdRef="CreateFile_1" Path="Logs\logSystemExceptions.txt" />
+                  </If.Then>
+                </If>
+                <ui:AppendLine DisplayName="Append line" FileName="Logs\logSystemExceptions.txt" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[&quot;Entró a System Error en VerificaciónSprintActivo.xaml en la fecha: &quot; + Date.Now.ToString + &quot;/n&quot; + exception.ToString]" />
               </Sequence>
             </ActivityAction>
           </Catch>
@@ -171,21 +203,29 @@
                     <InArgument x:TypeArguments="ui:SelectorNotFoundException">[exception]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;selector not found verificacion sprint activo&quot; + exception.Source]" TopMost="True" />
+                <If Condition="[Not File.Exists(&quot;Logs\logSelectorNotFoundException.txt&quot;)]" DisplayName="If Log file doesn't exist" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If.Then>
+                    <ui:CreateFile Name="{x:Null}" ContinueOnError="True" DisplayName="Create Log file" sap2010:WorkflowViewState.IdRef="CreateFile_2" Path="Logs\logSelectorNotFoundException.txt" />
+                  </If.Then>
+                </If>
+                <ui:AppendLine DisplayName="Append line" FileName="Logs\logSelectorNotFoundException.txt" sap2010:WorkflowViewState.IdRef="AppendLine_2" Text="[&quot;Entró a Selector not found exception en VerificaciónSprintActivo.xaml en la fecha: &quot; + Date.Now.ToString + &quot;/n&quot; + exception.ToString]" />
               </Sequence>
             </ActivityAction>
           </Catch>
         </TryCatch.Catches>
       </TryCatch>
     </Sequence>
-    <sads:DebugSymbol.Symbol>d1VDOlxVc2Vyc1xkaWFuYS5jaXJvXERlc2t0b3BccHJveWVjdG8gU1dBTVxQcnVlYmEgQ2llcnJlXFZlcmlmaWNhY2lvblNwcmludEFjdGl2by54YW1sJUgDtgEOAgEBSQW0ARACAQJKB0qzAQIBLksHswESAgEDSocBSrABAgEvTQuLAR0CARWTAQ+dARoCAQylAQ+vARoCAQRNeU2HAQIBLFMRiAEcAgEWlAERmwEaAgEQnAERnAGLAgIBDaYBEa0BGgIBB64BEa4BiAICAQVYE1i2AQIBKVkTZx4CASdoE28lAgEicBOHARgCAReZAT+ZAUoCAROWAUCWAVECARGcAaYBnAH5AQIBDqsBUKsBWwIBCqgBUagBZAIBCK4BpgGuAfYBAgEGWIUBWLMBAgEqZaYBZecBAgEoaEloUgIBJWpGak8CASNtbW2mAQIBJnAhcEMCARhyF3siAgEdfheFASACARlzGXoiAgEegwFDgwFHAgEcgAFEgAFbAgEaeEV4SgIBIXVGdV0CAR8=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1VDOlxVc2Vyc1xkaWFuYS5jaXJvXERlc2t0b3BccHJveWVjdG8gU1dBTVxQcnVlYmEgQ2llcnJlXFZlcmlmaWNhY2lvblNwcmludEFjdGl2by54YW1sOUgD2wEOAgEBSQXZARACAQJKB0qzAQIBREsH2AESAgEDSocBSrABAgFFTQumAR0CASGuAQ+9ARoCARLFAQ/UARoCAQRNeU2HAQIBQlMRowEcAgEirwERtgEaAgEctwERuwEWAgEXvAERvAGmAgIBE8YBEc0BGgIBDc4BEdIBFgIBCNMBEdMBvwICAQVZE1m2AQIBP1oTXigCATpfE4IBGAIBM4MBE4oBJQIBLosBE6IBGAIBI7QBP7QBSgIBH7EBQLEBUQIBHbcBH7cBXAIBGLkBFbkBvgECARm8AZYBvAGjAgIBFbwBQ7wBYQIBFMsBUMsBWwIBEMgBUcgBZAIBDs4BH84BZQIBCdABFdABxwECAQrTAZ8B0wG8AgIBB9MBQ9MBagIBBlmFAVmzAQIBQFxYXJkBAgE+XKQBXKoBAgE9WmBadQIBO18hXz0CATRhF28iAgE4cheAASICATaDAUmDAVICATGFAUaFAU8CAS+IAW2IAaYBAgEyiwEhiwFDAgEkjQEXlgEiAgEpmQEXoAEgAgEluQFEuQFKAgEbuQGdAbkBuwECARrQAUTQAUoCAQzQAZ0B0AHEAQIBC22qAW3rAQIBOX6qAX7sAQIBN44BGZUBIgIBKp4BQ54BRwIBKJsBRJsBWwIBJpMBRZMBSgIBLZABRpABXQIBKw==</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314,94.6666666666667" />
-      <sap2010:ViewStateData Id="NavigateTo_1" sap:VirtualizedContainerService.HintSize="531.333333333333,58.6666666666667" />
-      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="531.333333333333,106" />
-      <sap2010:ViewStateData Id="GetAttribute_1" sap:VirtualizedContainerService.HintSize="531.333333333333,96" />
+      <sap2010:ViewStateData Id="NavigateTo_1" sap:VirtualizedContainerService.HintSize="652.666666666667,58.6666666666667" />
+      <sap2010:ViewStateData Id="UiElementExists_1" sap:VirtualizedContainerService.HintSize="652.666666666667,68" />
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="652.666666666667,258" />
+      <sap2010:ViewStateData Id="GetAttribute_1" sap:VirtualizedContainerService.HintSize="652.666666666667,96" />
       <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,60.6666666666667" />
       <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="264,184.666666666667">
         <sap:WorkflowViewStateService.ViewState>
@@ -195,25 +235,8 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,60.6666666666667" />
-      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="531.333333333333,334.666666666667" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="553.333333333333,839.333333333333">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="BrowserScope_1" sap:VirtualizedContainerService.HintSize="567.333333333333,987.333333333333" />
-      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="314,60.6666666666667" />
-      <sap2010:ViewStateData Id="MessageBox_2" sap:VirtualizedContainerService.HintSize="314,58.6666666666667" />
-      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="336,283.333333333333">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="571.333333333333,22.6666666666667">
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="652.666666666667,336.666666666667" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="200,52.6666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -221,16 +244,19 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="314,60.6666666666667" />
-      <sap2010:ViewStateData Id="MessageBox_3" sap:VirtualizedContainerService.HintSize="314,58.6666666666667" />
-      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="336,283.333333333333">
+      <sap2010:ViewStateData Id="BrowserScope_1" sap:VirtualizedContainerService.HintSize="414,240.666666666667" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="464,60.6666666666667" />
+      <sap2010:ViewStateData Id="CreateFile_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="464,212" />
+      <sap2010:ViewStateData Id="AppendLine_1" sap:VirtualizedContainerService.HintSize="464,86.6666666666667" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="486,563.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Catch`1_3" sap:VirtualizedContainerService.HintSize="571.333333333333,22.6666666666667">
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="492,21.3333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -238,7 +264,26 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="585.333333333333,1288">
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="464,60" />
+      <sap2010:ViewStateData Id="CreateFile_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_4" sap:VirtualizedContainerService.HintSize="464,210" />
+      <sap2010:ViewStateData Id="AppendLine_2" sap:VirtualizedContainerService.HintSize="464,86.6666666666667" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="486,560.666666666667">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_3" sap:VirtualizedContainerService.HintSize="492,630.666666666667">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="506,820">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
