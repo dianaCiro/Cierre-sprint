@@ -1,0 +1,154 @@
+﻿Not found error11/08/2018 14:22:14 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:23:15 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:24:15 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:25:15 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:28:59 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:29:52 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:30:45 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:31:36 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:33:15 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:34:07 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:35:00 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:37:15 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:38:03 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:38:50 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:39:44 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:40:40 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:46:29 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 14:47:32 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 15:00:16 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 15:01:16 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 15:02:19 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl aaname='Sprints activos' isleaf='1' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)
+Not found error11/08/2018 15:02:55 : UiPath.Core.SelectorNotFoundException: Cannot find the UI element corresponding to this selector: <webctrl isleaf='1' parentid='log_out' tag='SPAN' /> ---> System.Runtime.InteropServices.COMException: Cannot find the UI element corresponding to this selector: <webctrl isleaf='1' parentid='log_out' tag='SPAN' />
+   at UiPath.UiNodeClass.FindFirst(UiFindScope scope, String nodeID)
+   at UiPath.Core.UiElement.FindFirst(FindScope scope, Selector selector)
+   --- End of inner exception stack trace ---
+   at UiPath.Core.Activities.ScopeActivity.OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.Invoke(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
+   at System.Activities.Runtime.FaultCallbackWrapper.FaultWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)

@@ -78,7 +78,7 @@
       <FlowStep x:Name="__ReferenceID11" sap2010:WorkflowViewState.IdRef="FlowStep_74">
         <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_4">
           <TryCatch.Try>
-            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[in_Browser]" BrowserType="Chrome" DisplayName="Attach Browser" sap2010:WorkflowViewState.IdRef="BrowserScope_5">
+            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[in_Browser]" BrowserType="Firefox" DisplayName="Attach Browser" sap2010:WorkflowViewState.IdRef="BrowserScope_5">
               <ui:BrowserScope.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
@@ -115,7 +115,6 @@
                                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;webctrl aaname='Complete' parentid='ghx-dialog-complete-sprint' tag='BUTTON' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
                               </ui:UiElementExists.Target>
                             </ui:UiElementExists>
-                            <If Condition="[existButtonCompleted = true]" sap2010:WorkflowViewState.IdRef="If_24" />
                           </Sequence>
                           <FlowStep.Next>
                             <FlowDecision x:Name="__ReferenceID9" Condition="[existButtonCompleted = true]" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
@@ -256,6 +255,7 @@
                                                                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="[selectorElement]" WaitForReady="INTERACTIVE" />
                                                                       </ui:Click.Target>
                                                                     </ui:Click>
+                                                                    <Delay Duration="00:00:10" sap2010:WorkflowViewState.IdRef="Delay_33" />
                                                                     <ui:UiElementExists DisplayName="Element Exists issue padre en done" Exists="[existDone]" sap2010:WorkflowViewState.IdRef="UiElementExists_16">
                                                                       <ui:UiElementExists.Target>
                                                                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;webctrl aaname='Done' parentid='jira-frontend' tag='BUTTON' type='button' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
@@ -411,12 +411,12 @@
                       <InArgument x:TypeArguments="s:Exception">[exception]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <If Condition="[Not File.Exists(&quot;Logs\logSystemExceptions.txt&quot;)]" DisplayName="If Log file doesn't exist" sap2010:WorkflowViewState.IdRef="If_27">
+                  <If Condition="[Not File.Exists(&quot;Logs\logSystemError.txt&quot;)]" DisplayName="If Log file doesn't exist" sap2010:WorkflowViewState.IdRef="If_27">
                     <If.Then>
-                      <ui:CreateFile Name="{x:Null}" ContinueOnError="True" DisplayName="Create Log file" sap2010:WorkflowViewState.IdRef="CreateFile_2" Path="Logs\logSystemExceptions.txt" />
+                      <ui:CreateFile Name="{x:Null}" ContinueOnError="True" DisplayName="Create Log file" sap2010:WorkflowViewState.IdRef="CreateFile_2" Path="Logs\logSystemError.txt" />
                     </If.Then>
                   </If>
-                  <ui:AppendLine DisplayName="Append line" FileName="Logs\logSystemExceptions.txt" sap2010:WorkflowViewState.IdRef="AppendLine_2" Text="[&quot;Entró a System Error en CerrarSprint.xaml en la fecha: &quot; + Date.Now.ToString + &quot;/n&quot; + exception.ToString]" />
+                  <ui:AppendLine DisplayName="Append line" FileName="Logs\logSystemError.txt" sap2010:WorkflowViewState.IdRef="AppendLine_2" Text="[&quot;SystemError&quot; + Date.Now.ToString + &quot; : &quot; + out_SystemError.ToString]" />
                 </Sequence>
               </ActivityAction>
             </Catch>
@@ -434,12 +434,12 @@
                       <InArgument x:TypeArguments="ui:SelectorNotFoundException">[exception]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <If Condition="[Not File.Exists(&quot;Logs\logSelectorNotFoundException.txt&quot;)]" DisplayName="If Log file doesn't exist" sap2010:WorkflowViewState.IdRef="If_26">
+                  <If Condition="[Not File.Exists(&quot;Logs\logNotFoundError.txt&quot;)]" DisplayName="If Log file doesn't exist" sap2010:WorkflowViewState.IdRef="If_26">
                     <If.Then>
-                      <ui:CreateFile Name="{x:Null}" ContinueOnError="True" DisplayName="Create Log file" sap2010:WorkflowViewState.IdRef="CreateFile_1" Path="Logs\logSelectorNotFoundException.txt" />
+                      <ui:CreateFile Name="{x:Null}" ContinueOnError="True" DisplayName="Create Log file" sap2010:WorkflowViewState.IdRef="CreateFile_1" Path="Logs\logNotFoundError.txt" />
                     </If.Then>
                   </If>
-                  <ui:AppendLine DisplayName="Append line" FileName="Logs\logSelectorNotFoundException.txt" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[&quot;Entró a Selector not found exception en CerrarSprint.xaml en la fecha: &quot; + Date.Now.ToString + &quot;/n&quot; + exception.ToString]" />
+                  <ui:AppendLine DisplayName="Append line" FileName="Logs\logNotFoundError.txt" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[&quot;Not found error&quot; + Date.Now.ToString + &quot; : &quot;+ out_NotFoundError.ToString]" />
                 </Sequence>
               </ActivityAction>
             </Catch>
@@ -448,15 +448,14 @@
       </FlowStep>
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID11</x:Reference>
-    <sads:DebugSymbol.Symbol>d0pDOlxVc2Vyc1xkaWFuYS5jaXJvXERlc2t0b3BccHJveWVjdG8gU1dBTVxQcnVlYmEgQ2llcnJlXENlcnJhciBTcHJpbnQueGFtbHVJA8QDDwIBAU8JvwMUAgECUQ2NAx8CASCVAxGkAxwCARGsAxG7AxwCAQNRe1GJAQMBkQFXE4oDHgIBIZYDE50DHAIBG54DE6IDGAIBFqMDE6MDnAICARKtAxO0AxwCAQy1AxO5AxgCAQe6AxO6A7UCAgEEWBVYsAEDAY8BWRWJAyECASKbA0GbA0wCAR6YA0KYA1MCARyeAyGeA14CARegAxegA8ABAgEYowOYAaMDmQICARSjA0WjA2MCAROyA1KyA10CAQ+vA1OvA2YCAQ21AyG1A2cCAQi3Axe3A8kBAgEJugOhAboDsgICAQa6A0W6A2wCAQVYlQFYrQEDAZABXBt3JgIBf3lNeWwCAX2PASP7Ai8CASV8I4oBLgIBI6ADRqADTAIBGqADnwGgA70BAgEZtwNGtwNMAgELtwOfAbcDxgECAQpdHWsoAwGNAWwdcDIDAYgBcR11MgMBgwF2HXZ1AwGAAZgBKZoBNAIBeZ0BLaEBPwIBdaQBMasBOgIBca4BNa4BfQIBb7EBOd8BRgIBVeIBPeICSgIBKeUCQeUC4gECASaIAbYBiAGOAgIBJGmwAWnpAQMBjgFuYm66AQMBjAFuxQFuywEDAYsBbGNsewMBiQFzYnO6AQMBhwFzxQFzywEDAYYBcWRxfAMBhAF2K3ZKAwGBAZkBK5kB0AECAXqfAcABnwHvAQIBeJ0BkwGdAa4BAgF3nQFHnQFeAgF2qQFmqQF7AgF0pgFnpgF9AgFyrgFFrgFPAgFwsQHIAbEB3wECAW63AT/cAUoCAVbiAdUB4gHtAQIBU+gBQ98CTgIBKuUCsQHlAt8BAgEnmQGbAZkBzQECAXu7AUHCAUoCAWrDAUHbAUYCAVfsAUXzAU4CAU70AUWCAlACAUuDAkWHAloCAUaIAkXdAkoCAS3eAkXeAo0BAgErwAFswAGIAQIBbb0Bbb0BeQIBa8MBT8MBkAECAVjFAUXZAVACAVvxAXDxAasBAgFR7gFx7gGCAQIBT4ACnwGAArIBAgFMhQKKAYUC3wECAUqFAuoBhQLwAQIBSYMCkQGDAp4BAgFHiAJTiAJnAgEuigJJqgJUAgFArQJJ2wJUAgEw3gJV3gJfAgEsygFH0QFQAgFm0gFH2AFMAgFciwJLmQJWAgFEmgJLqAJWAgFCqQJLqQKtAQIBQa4CS7ICYAIBO7MCS9oCUAIBMc8Bcs8BjQECAWnMAXPMAX4CAWfSAVXSAYkBAgFd1AFL1gFWAgFglwKlAZcC+gECAUWmAt4BpgKZBQIBQ7ACkAGwAuYBAgE/sALxAbAC9wECAT6uAoMBrgKQAQIBPLMCWbMCbQIBMrUCT9UCWgIBNdgCT9gCsQECATTVAU3VAYgCAgFhtgJRxAJcAgE5xQJR0wJcAgE31AJR1AKzAQIBNtUBhAHVAZwBAgFk1QH4AdUBhQICAWLCAqsBwgKBAgIBOtEC5AHRAqMFAgE4</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d09DOlxVc2Vyc1xkaWFuYS5jaXJvXERlc2t0b3BccHJveWVjdG8gU1dBTVxDaWVycmUgU3ByaW50IEppcmFcQ2VycmFyIFNwcmludC54YW1sdUkDxAMPAgEBTwm/AxQCAQJRDY0DHwIBIJUDEaQDHAIBEawDEbsDHAIBA1F7UYkBAwGQAVcTigMeAgEhlgMTnQMcAgEbngMTogMYAgEWowMTowPyAQIBEq0DE7QDHAIBDLUDE7kDGAIBB7oDE7oD+QECAQRYFViwAQMBjgFZFYkDIQIBIpsDQZsDTAIBHpgDQpgDUwIBHJ4DIZ4DWQIBF6ADF6ADuwECARijA5MBowPvAQIBFKMDRaMDXgIBE7IDUrIDXQIBD68DU68DZgIBDbUDIbUDWwIBCLcDF7cDvQECAQm6A5UBugP2AQIBBroDRboDYAIBBViVAVitAQMBjwFcG3YmAwGBAXhNeGwCAX+OASP7Ai8CASV7I4kBLgIBI6ADRqADTAIBGqADnwGgA7gBAgEZtwNGtwNMAgELtwOfAbcDugECAQpdHWsoAwGMAWwdcDIDAYcBcR11MgMBggGXASmZATQCAXucAS2gAT8CAXejATGqAToCAXOtATWtAX0CAXGwATneAUYCAVfhAT3iAkoCASnlAkHlAuIBAgEmhwG2AYcBjgICASRpsAFp6QEDAY0BbmJuugEDAYsBbsUBbssBAwGKAWxjbHsDAYgBc2JzugEDAYYBc8UBc8sBAwGFAXFkcXwDAYMBmAErmAHQAQIBfJ4BwAGeAe8BAgF6nAGTAZwBrgECAXmcAUecAV4CAXioAWaoAXsCAXalAWelAX0CAXStAUWtAU8CAXKwAcgBsAHfAQIBcLYBP9sBSgIBWOEB1QHhAe0BAgFV5wFD3wJOAgEq5QKxAeUC3wECASeYAZsBmAHNAQIBfboBQcEBSgIBbMIBQdoBRgIBWesBRfIBTgIBUPMBRYECUAIBTYICRYICjQECAUuDAkWHAloCAUaIAkXdAkoCAS3eAkXeAo0BAgErvwFsvwGIAQIBb7wBbbwBeQIBbcIBT8IBkAECAVrEAUXYAVACAV3wAXDwAasBAgFT7QFx7QGCAQIBUf8BnwH/AbIBAgFOggJVggJfAgFMhQKKAYUC3wECAUqFAuoBhQLwAQIBSYMCkQGDAp4BAgFHiAJTiAJnAgEuigJJqgJUAgFArQJJ2wJUAgEw3gJV3gJfAgEsyQFH0AFQAgFo0QFH1wFMAgFeiwJLmQJWAgFEmgJLqAJWAgFCqQJLqQKtAQIBQa4CS7ICYAIBO7MCS9oCUAIBMc4Bcs4BjQECAWvLAXPLAX4CAWnRAVXRAYkBAgFf0wFL1QFWAgFilwKlAZcC+gECAUWmAt4BpgKZBQIBQ7ACkAGwAuYBAgE/sALxAbAC9wECAT6uAoMBrgKQAQIBPLMCWbMCbQIBMrUCT9UCWgIBNdgCT9gCsQECATTUAU3UAYgCAgFjtgJRxAJcAgE5xQJR0wJcAgE31AJR1AKzAQIBNtQBhAHUAZwBAgFm1AH4AdQBhQICAWTCAqsBwgKBAgIBOtEC5AHRAqMFAgE4</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314,94.6666666666667" />
-      <sap2010:ViewStateData Id="Click_40" sap:VirtualizedContainerService.HintSize="464,106" />
-      <sap2010:ViewStateData Id="UiElementExists_13" sap:VirtualizedContainerService.HintSize="464,68" />
-      <sap2010:ViewStateData Id="UiElementExists_15" sap:VirtualizedContainerService.HintSize="464,68" />
-      <sap2010:ViewStateData Id="If_24" sap:VirtualizedContainerService.HintSize="464,212" />
+      <sap2010:ViewStateData Id="Click_40" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="UiElementExists_13" sap:VirtualizedContainerService.HintSize="314,68" />
+      <sap2010:ViewStateData Id="UiElementExists_15" sap:VirtualizedContainerService.HintSize="314,68" />
       <sap2010:ViewStateData Id="Sequence_52" sap:VirtualizedContainerService.HintSize="200,52.6666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -533,6 +532,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Delay_33" sap:VirtualizedContainerService.HintSize="242,22" />
       <sap2010:ViewStateData Id="UiElementExists_16" sap:VirtualizedContainerService.HintSize="242,52.6666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -580,7 +580,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Delay_30" sap:VirtualizedContainerService.HintSize="242,22" />
-      <sap2010:ViewStateData Id="Sequence_58" sap:VirtualizedContainerService.HintSize="200,52.6666666666667">
+      <sap2010:ViewStateData Id="Sequence_58" sap:VirtualizedContainerService.HintSize="264,586.666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -588,7 +588,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEach`1_14" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" />
+      <sap2010:ViewStateData Id="ForEach`1_14" sap:VirtualizedContainerService.HintSize="286.666666666667,196.666666666667" />
       <sap2010:ViewStateData Id="NavigateTo_19" sap:VirtualizedContainerService.HintSize="200,52.6666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -699,7 +699,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Flowchart_14" sap:VirtualizedContainerService.HintSize="314,52.6666666666667">
+      <sap2010:ViewStateData Id="Flowchart_14" sap:VirtualizedContainerService.HintSize="614,636">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -716,7 +716,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="BrowserScope_5" sap:VirtualizedContainerService.HintSize="200,52.6666666666667">
+      <sap2010:ViewStateData Id="BrowserScope_5" sap:VirtualizedContainerService.HintSize="414,419.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -728,14 +728,14 @@
       <sap2010:ViewStateData Id="CreateFile_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="If_27" sap:VirtualizedContainerService.HintSize="464,212" />
       <sap2010:ViewStateData Id="AppendLine_2" sap:VirtualizedContainerService.HintSize="464,86.6666666666667" />
-      <sap2010:ViewStateData Id="Sequence_61" sap:VirtualizedContainerService.HintSize="486,563.333333333333">
+      <sap2010:ViewStateData Id="Sequence_61" sap:VirtualizedContainerService.HintSize="486,559.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Catch`1_7" sap:VirtualizedContainerService.HintSize="492,22.6666666666667">
+      <sap2010:ViewStateData Id="Catch`1_7" sap:VirtualizedContainerService.HintSize="404,22.6666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -747,22 +747,22 @@
       <sap2010:ViewStateData Id="CreateFile_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="If_26" sap:VirtualizedContainerService.HintSize="464,212" />
       <sap2010:ViewStateData Id="AppendLine_1" sap:VirtualizedContainerService.HintSize="464,86.6666666666667" />
-      <sap2010:ViewStateData Id="Sequence_60" sap:VirtualizedContainerService.HintSize="486,563.333333333333">
+      <sap2010:ViewStateData Id="Sequence_60" sap:VirtualizedContainerService.HintSize="486,559.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Catch`1_8" sap:VirtualizedContainerService.HintSize="492,633.333333333333">
+      <sap2010:ViewStateData Id="Catch`1_8" sap:VirtualizedContainerService.HintSize="404,22.6666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="TryCatch_4" sap:VirtualizedContainerService.HintSize="506,828">
+      <sap2010:ViewStateData Id="TryCatch_4" sap:VirtualizedContainerService.HintSize="418,321.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -789,7 +789,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Cerrar_Sprint_1" sap:VirtualizedContainerService.HintSize="658,1075.33333333333" />
+      <sap2010:ViewStateData Id="Cerrar_Sprint_1" sap:VirtualizedContainerService.HintSize="658,955.333333333333" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
